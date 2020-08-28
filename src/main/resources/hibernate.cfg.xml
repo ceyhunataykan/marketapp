@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ 
+    <session-factory>
+ 
+        <!-- Veritabanı baglanti bilgileri -->
+        <!-- Veritabanı jdbc -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--Veritabanımız için bağlantı yolunu vereceğiz  -->
+        <property name="connection.url">jdbc:mysql://localhost:3306/BaseMarketDB?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf-8</property>
+        <!-- Veritabanı kullanıcı adı -->
+        <property name="connection.username">root</property>
+        <!-- Kullanıcı parolamız -->
+        <property name="connection.password">root/property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Disable the second-level cache  -->
+        <property name="current_session_context_class">thread</property>    
+        <!-- Konsolda yapılan işlemlerin sql sorgusu gösterilsin mi -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <!-- Burası create olursa tablo her defasında yeniden oluşturulur -->
+        <!-- Update olur ise veritabanı silinmez üzerine ekleme yapılır -->
+        <property name="hbm2ddl.auto">update</property>
+        <!-- dbcp pool ayarları-->
+        <property name="hibernate.dbcp.initialSize">5</property>
+        <property name="hibernate.dbcp.maxTotal">20</property>
+        <property name="hibernate.dbcp.maxIdle">10</property>
+        <property name="hibernate.dbcp.minIdle">5</property>
+        
+        <!-- Burası ise veritabanımıza haritalanacak olan sınıflarımızın yolları -->
+        <mapping class="com.ceyhunataykan.model.Kullanicilar"/>
+        <mapping class="com.ceyhunataykan.model.FirmaBilgileri"/>
+        <mapping class="com.ceyhunataykan.model.Kategoriler"/>
+        <mapping class="com.ceyhunataykan.model.Markalar"/>
+        <mapping class="com.ceyhunataykan.model.Urunler"/>
+        <mapping class="com.ceyhunataykan.model.Fisler"/>
+        <mapping class="com.ceyhunataykan.model.Satislar"/>
+           
+    </session-factory>
+ 
+</hibernate-configuration>
+
